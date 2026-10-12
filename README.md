@@ -1,11 +1,13 @@
 # TheTaleTribe Desktop
 
 An offline writing app for TheTaleTribe. Stories live on the writer's own
-computer; nothing here needs a network or an account. The plan this follows is
-`features/desktop-editor-plan.md` in the workspace root. This repo currently
-covers **Chunks 1 to 4**: the app shell, local storage, the editor, AI writing
-help from a local or bring-your-own-key model, publishing to the website, and
-importing from it.
+computer; nothing here needs a network or an account. In the TheTaleTribe
+workspace this repo is checked out as `repos/taleTribe-desktop`; on GitHub it
+is `taleTribe-editor-desktop`.
+
+Built so far: the app shell, local storage, the editor, AI writing help from a
+local or bring-your-own-key model, publishing to the website, and importing
+from it.
 
 ## Commands
 
@@ -173,4 +175,4 @@ guess.
 
 ## Not here yet
 
-Installers, signing and auto-update are the last chunk of the plan. The Story Assistant chat is not planned for this app yet.
+Installers, code signing and auto-update are not built yet. The Story Assistant chat is not planned for this app yet.
