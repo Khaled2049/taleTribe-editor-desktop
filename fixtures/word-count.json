@@ -1,0 +1,10 @@
+[
+  { "html": "", "words": 0 },
+  { "html": "   \n\t", "words": 0 },
+  { "html": "<p>Hello world</p>", "words": 2 },
+  { "html": "<p>one</p><p>two</p>", "words": 1 },
+  { "html": "<p>a  b\n\tc\r\nd</p>", "words": 4 },
+  { "html": "<p style=\"text-align: center\">Hi</p>", "words": 3 },
+  { "html": "<p>non breaking space</p>", "words": 2 },
+  { "html": "<h1 class=\"text-3xl font-bold mb-4\">Chapter One</h1><p>It began.</p>", "words": 6 }
+]

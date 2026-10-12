@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Token names and values follow the web app's Inkwell palette. */
+@layer base {
+  :root {
+    --ns-bg: #fdfcf9;
+    --ns-surface: #f4f2ec;
+    --ns-surface-hover: #ece9e0;
+    --ns-elevated: #ffffff;
+    --ns-ink: #1c1c19;
+    --ns-ink-secondary: #5c5b53;
+    --ns-ink-muted: #9c9b93;
+    --ns-accent: #b91c1c;
+    --ns-accent-hover: #991b1b;
+    --ns-accent-subtle: rgba(185, 28, 28, 0.07);
+    --ns-gold: #92400e;
+    --ns-gold-bright: #b45309;
+    --ns-border: #e5e3db;
+    --ns-border-strong: #d4d1c6;
+    --ns-destructive: #dc2626;
+    --ns-success: #16a34a;
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ns-bg: #0e0e0d;
+      --ns-surface: #191918;
+      --ns-surface-hover: #242422;
+      --ns-elevated: #222220;
+      --ns-ink: #ebebea;
+      --ns-ink-secondary: #a3a29c;
+      --ns-ink-muted: #6b6a64;
+      --ns-accent: #ef4444;
+      --ns-accent-hover: #dc2626;
+      --ns-accent-subtle: rgba(239, 68, 68, 0.1);
+      --ns-gold: #f59e0b;
+      --ns-gold-bright: #fbbf24;
+      --ns-border: #2d2d2b;
+      --ns-border-strong: #3d3d3a;
+      --ns-destructive: #ef4444;
+      --ns-success: #4ade80;
+      color-scheme: dark;
+    }
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-ns-bg font-ui text-sm text-ns-ink antialiased;
+    overscroll-behavior: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ns-accent);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center gap-1.5 rounded-ns border border-ns-border bg-ns-elevated px-3 py-1.5 text-sm text-ns-ink transition-colors hover:bg-ns-surface-hover disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply border-transparent bg-ns-accent text-white hover:bg-ns-accent-hover;
+  }
+  .btn-danger {
+    @apply border-transparent bg-ns-destructive text-white hover:opacity-90;
+  }
+  .icon-btn {
+    @apply inline-flex h-7 w-7 items-center justify-center rounded text-ns-ink-secondary transition-colors hover:bg-ns-surface-hover hover:text-ns-ink disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .field {
+    @apply w-full rounded-ns border border-ns-border bg-ns-elevated px-3 py-2 text-sm text-ns-ink placeholder:text-ns-ink-muted;
+  }
+
+  /* ─── Chapter text ─── */
+  .ProseMirror {
+    @apply font-body text-lg leading-[1.8] text-ns-ink outline-none;
+    min-height: 60vh;
+  }
+  .ProseMirror > * + * {
+    margin-top: 0.75em;
+  }
+  .ProseMirror h1 {
+    @apply text-3xl font-bold;
+  }
+  .ProseMirror h2 {
+    @apply text-2xl font-semibold;
+  }
+  .ProseMirror h3 {
+    @apply text-xl font-semibold;
+  }
+  .ProseMirror ul.list-disc,
+  .ProseMirror ol.list-decimal {
+    padding-left: 1.5rem;
+  }
+  .ProseMirror blockquote {
+    @apply border-l-2 border-ns-border-strong pl-4 italic text-ns-ink-secondary;
+  }
+  .ProseMirror hr {
+    @apply my-6 border-ns-border-strong;
+  }
+  .ProseMirror a {
+    @apply text-ns-accent underline;
+  }
+  .ProseMirror p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    @apply pointer-events-none float-left h-0 text-ns-ink-muted;
+  }
+
+  /* Code blocks and task lists: class names are part of the stored HTML. */
+  .ns-code-block {
+    @apply my-4 overflow-x-auto rounded-md border border-ns-border bg-ns-surface px-5 py-4 text-ns-ink;
+    font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
+    font-size: 0.875em;
+    line-height: 1.6;
+  }
+  .ns-code-block code {
+    @apply border-0 bg-transparent p-0;
+    font-size: inherit;
+    color: inherit;
+  }
+  .ProseMirror code {
+    @apply rounded border border-ns-border bg-ns-surface text-ns-accent;
+    padding: 0.1em 0.35em;
+    font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
+    font-size: 0.875em;
+  }
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-built_in,
+  .hljs-name,
+  .hljs-tag {
+    color: var(--ns-accent);
+    font-weight: 600;
+  }
+  .hljs-string,
+  .hljs-attr,
+  .hljs-attribute {
+    color: var(--ns-gold-bright);
+  }
+  .hljs-number,
+  .hljs-literal,
+  .hljs-variable,
+  .hljs-type {
+    color: var(--ns-success);
+  }
+  .hljs-comment,
+  .hljs-quote {
+    color: var(--ns-ink-muted);
+    font-style: italic;
+  }
+
+  .ns-task-list {
+    list-style: none;
+    padding-left: 0.25rem;
+    margin: 0.5rem 0;
+  }
+  .ns-task-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin: 0.25rem 0;
+  }
+  .ns-task-item > label {
+    display: flex;
+    align-items: center;
+    padding-top: 0.5em;
+    flex-shrink: 0;
+  }
+  .ns-task-item > label > input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--ns-accent);
+  }
+  .ns-task-item[data-checked="true"] > div {
+    color: var(--ns-ink-muted);
+    text-decoration: line-through;
+  }
+  .ns-task-item > div > .ns-task-list {
+    margin-top: 0.25rem;
+    padding-left: 1.5rem;
+  }
+}

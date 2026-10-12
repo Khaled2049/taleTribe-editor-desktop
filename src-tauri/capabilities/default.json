@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Core APIs only. Storage goes through the app's own commands; destroy lets the close handler finish after flushing a save.",
+  "windows": ["main"],
+  "permissions": ["core:default", "core:window:allow-destroy"]
+}
